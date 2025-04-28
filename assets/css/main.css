@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import "tailwindcss";
+
+html {
+    @apply sm:bg-gradient-to-b from-blue-600 to-cyan-950 bg-blue-600 sm:pb-10 bg-no-repeat bg-fixed;
+}
+
+body {
+    @apply container mx-auto;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+h1 {
+    @apply text-2xl font-medium leading-tight;
+}
