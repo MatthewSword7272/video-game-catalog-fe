@@ -36,8 +36,6 @@
         <select id="platform" v-model="formData.platform">
           <option selected disabled>Please Select</option>
           <option v-for="platform in data" :key="platform?.id" :value="platform?.name">
-            {{ console.log(platform) }}
-            {{ console.log(platform.name) }}
             {{ platform?.name }}
           </option>
         </select>
