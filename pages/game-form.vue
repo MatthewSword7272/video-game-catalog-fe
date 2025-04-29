@@ -36,6 +36,8 @@
         <select id="platform" v-model="formData.platform">
           <option selected disabled>Please Select</option>
           <option v-for="platform in data" :key="platform?.id" :value="platform?.name">
+            {{ console.log(platform) }}
+            {{ console.log(platform.name) }}
             {{ platform?.name }}
           </option>
         </select>
@@ -66,8 +68,6 @@ const route = useRoute();
 const currentYear = new Date().getFullYear();
 
 const {data} = await useFetch(`${config.app.apiURL}/platforms`)
-
-console.log(data);
 
 const formData = ref([]);
 const submitting = ref(false);
