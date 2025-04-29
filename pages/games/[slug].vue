@@ -2,7 +2,7 @@
     <div class="space-y-10">
         <div class="flex justify-center max-md:items-center md:gap-14 gap-4 max-md:flex-col">
             <div v-if="game.image" class="w-60">
-                <img :src="imageURL" class="object-fit"/>
+                <img :src="imageURL" class="object-fit" loading="lazy"/>
             </div>
             <div class="flex flex-col justify-between max-md:items-center">
                 <span><b>Game Title:</b> {{ game.title }}</span>
