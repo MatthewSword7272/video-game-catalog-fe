@@ -67,6 +67,8 @@ const currentYear = new Date().getFullYear();
 
 const {data} = await useFetch(`${config.app.apiURL}/platforms`)
 
+console.log(data);
+
 const formData = ref([]);
 const submitting = ref(false);
 
