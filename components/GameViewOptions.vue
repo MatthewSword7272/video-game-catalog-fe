@@ -1,7 +1,7 @@
 <template>
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center mb-5">
         <div class="flex gap-3">
-            <button @click="sortList" class="bg-gradient-to-b from-gray-200 to-gray-500 px-3 cursor-pointer hover:ring-2 duration-200">
+            <button @click="sortList" class="text-xl bg-gradient-to-b from-gray-200 to-gray-500 px-3 cursor-pointer hover:ring-2 duration-200">
                 Sort
             </button>
             <div v-if="listSorted">
