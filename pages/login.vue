@@ -1,48 +1,91 @@
 <template>
     <div class="relative h-screen">
-        <form class="absolute py-10 px-8 flex flex-col justify-around inset-1/2 -translate-1/2 h-[400px] md:w-[500px] w-full rounded bg-red-500 shadow-2xl">
+        <form
+            class="absolute py-10 px-8 flex flex-col justify-around inset-1/2 -translate-1/2 max-h-[600px] min-h-[500px] md:w-[500px] w-full rounded bg-red-500 shadow-2xl">
+            <div class="flex flex-col gap-2" v-if="createAccount">
+                <label for="name">Name</label>
+                <input required name="name" v-model="loginData.name" type="text" />
+            </div>
             <div class="flex flex-col gap-2">
                 <label for="username">Username</label>
-                <input name="username" v-model="loginData.username" type="text"/>
+                <input required name="username" v-model="loginData.username" type="text" />
             </div>
             <div class="flex flex-col gap-2">
                 <label for="password">Password</label>
-                <input name="password" v-model="loginData.password" type="text"/>
+                <input required name="password" type="password" v-model="loginData.password" />
             </div>
             <div class="text-center">
-                <span v-if="!createAccount">Don't have an account? <button @click="() => createAccount = true" id="link">Sign Up</button></span>
-                <span v-else>Have an account? <button @click="() => createAccount = false" id="link">Login In</button></span>
+                <span v-if="!createAccount">Don't have an account? <button @click="() => createAccount = true"
+                        id="link">Sign Up</button></span>
+                <span v-else>Have an account? <button @click="() => createAccount = false" id="link">Login
+                        In</button></span>
             </div>
-            <button id="mainButton" @click.prevent="addUser">{{createAccount ? 'Sign Up' : 'Login In'}}</button>
+            <button id="mainButton" @click.prevent="authUser">{{ createAccount ? 'Sign Up' : 'Login In' }}</button>
         </form>
     </div>
 </template>
 
 <script setup>
+import { useUsers } from '~/composables/stores/userStore';
+
 definePageMeta({
-  layout: false,
+    layout: false,
 })
 
 const config = useRuntimeConfig();
 
 const createAccount = ref(false);
 
-const loginData = reactive({
+const loginData = ref(reactive({
+    name: '',
     username: '',
     password: '',
-    password_confirmation: '',
-});
+}));
 
-const addUser = async () => {
+const {storeUser} = useUsers();
 
-    loginData.password_confirmation = loginData.password;
+const authUser = async () => {
 
-    const response = await $fetch(`${config.app.apiURL}/users`, {
-        method: 'POST',
-        body: loginData,
+    if (createAccount.value) {
+        const {data} = await $fetch(`${config.app.apiURL}/users`, {
+            method: 'POST',
+            body: loginData.value,
+        });
+
+        let user = data.value;
+
+        storeUser(user);
+    } else {
+        try {
+            const { data, error } = await useFetch(`${config.app.apiURL}/users/verify`, {
+                query: {
+                    username: loginData.value.username,
+                    password: loginData.value.password
+                }
+            });
+
+            if (error.value) {
+                alert('Invalid credentials. Please Try Again');
+                return;
+            }
+
+            let user = data.value;
+
+            storeUser(user);
+            alert('Success!');
+            navigateTo('/');
+        } catch (error) {
+            console.error('Login error: ', error);
+            alert('An error occurred during login. Please try again')
+        }
+    }
+
+    loginData.value = reactive({
+        name: '',
+        username: '',
+        password: '',
     });
 
-    console.log(response);
 }
 
 </script>
