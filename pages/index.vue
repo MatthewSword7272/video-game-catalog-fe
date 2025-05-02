@@ -12,6 +12,10 @@
 
 <script setup lang="ts">
 
+definePageMeta({
+  middleware: ["auth"]
+})
+
 const games = ref<Object[]>([]);
 
 const config = useRuntimeConfig();

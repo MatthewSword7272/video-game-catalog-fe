@@ -47,7 +47,8 @@ const registerUser = async () => {
         });
 
         if (data.value) {
-            storeUser(data.value);
+            const user = data.value.user;
+            storeUser(user);
             alert('Account created successfully!');
             navigateTo('/');
         } else {

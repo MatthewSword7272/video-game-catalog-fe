@@ -15,6 +15,7 @@
     "@nuxt/image": "1.10.0",
     "@pinia/nuxt": "0.11.0",
     "@tailwindcss/vite": "^4.1.4",
+    "gsap": "^3.13.0",
     "nuxt": "^3.16.2",
     "oh-vue-icons": "^1.0.0-rc3",
     "pinia": "^3.0.2",
