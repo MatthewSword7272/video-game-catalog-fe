@@ -94,6 +94,7 @@ const submitGame = async () => {
       await $fetch(`${config.app.apiURL}/games/${route.query.gameID}`, {
         method: 'PUT',
         body: formData.value,
+        credentials: 'include'
       });
       // Reset form after successful submission
       Object.keys(formData.value).forEach(key => formData.value[key] = '');
@@ -116,6 +117,7 @@ const submitGame = async () => {
       await $fetch(`${config.app.apiURL}/games`, {
         method: 'POST',
         body: formData.value,
+        credentials: 'include'
       });
       // Reset form after successful submission
       Object.keys(formData.value).forEach(key => formData.value[key] = '');

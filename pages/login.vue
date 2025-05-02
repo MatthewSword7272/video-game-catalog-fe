@@ -58,7 +58,8 @@ const authUser = async () => {
     } else {
         try {
             const { data, error } = await useFetch(`${config.app.apiURL}/users/verify`, {
-                query: {
+                method: 'POST',
+                body: {
                     username: loginData.value.username,
                     password: loginData.value.password
                 }
