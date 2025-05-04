@@ -2,14 +2,21 @@ import { useUsers } from '~/composables/stores/userStore';
 
 export default defineNuxtRouteMiddleware((to, from) => {
 
-  const userStore = useUsers();
+  // const userStore = useUsers();
 
-  const {getUser} = userStore;
+  if (import.meta.server) return
 
-  if (getUser() === null && to.path !== '/login' && to.path !== '/signup') {
+  const {currentUser} = useUsers();
+  // const user = getUser();
+
+  console.log('currentUser', currentUser);
+
+  if (currentUser === null && (to.path === '/')) {
     return navigateTo('/login')
-  } else {
-    return navigateTo('/')
+  }
+
+  if (currentUser && to.path === '/login') {
+    return navigateTo('/');
   }
 
 })

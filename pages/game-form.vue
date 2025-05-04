@@ -59,6 +59,8 @@
 </template>
 
 <script setup lang="ts">
+import { useUsers } from '~/composables/stores/userStore';
+
 
 definePageMeta({
   middleware: ["auth"]
@@ -73,6 +75,8 @@ const {data} = await useFetch(`${config.app.apiURL}/platforms`)
 
 const formData = ref([]);
 const submitting = ref(false);
+
+const {currentUser} = useUsers();
 
 if (route.query.edit) {
   const { data: gameData } = await useFetch(`${config.app.apiURL}/games/${route.query.gameID}`);
@@ -118,9 +122,14 @@ const submitGame = async () => {
     try {
       submitting.value = true;
 
+      const formattedData = {
+        ...formData.value,
+        user_id: currentUser?.id
+      };
+
       await $fetch(`${config.app.apiURL}/games`, {
         method: 'POST',
-        body: formData.value,
+        body: formattedData,
         credentials: 'include'
       });
       // Reset form after successful submission
