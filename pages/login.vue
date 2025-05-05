@@ -34,7 +34,10 @@ const loginData = ref({
 
 const { storeUser } = useUsers();
 
+const turnLoading = inject('loading')
+
 const login = async () => {
+    turnLoading(true);
     try {
         const { data, error } = await useFetch(`${config.app.apiURL}/users/verify`, {
             method: 'POST',
@@ -43,6 +46,8 @@ const login = async () => {
                 password: loginData.value.password
             }
         });
+
+        turnLoading(false);
 
         if (error.value) {
             alert('Invalid credentials. Please Try Again');
@@ -55,6 +60,7 @@ const login = async () => {
             navigateTo('/');
         }
     } catch (error) {
+        turnLoading(false);
         console.error('Login error:', error);
         alert('An error occurred during login. Please try again');
     }

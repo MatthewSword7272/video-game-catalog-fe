@@ -39,12 +39,19 @@ const signupData = ref({
 
 const { storeUser } = useUsers();
 
+const turnLoading = inject('loading')
+
 const registerUser = async () => {
+
+    turnLoading(true);
+
     try {
         const { data } = await useFetch(`${config.app.apiURL}/users`, {
             method: 'POST',
             body: signupData.value,
         });
+
+        turnLoading(false);
 
         if (data.value) {
             const user = data.value.user;
@@ -56,6 +63,7 @@ const registerUser = async () => {
             navigateTo('/login');
         }
     } catch (error) {
+        turnLoading(false);
         console.error('Registration error:', error);
         alert('Error creating account. Please try again.');
     }

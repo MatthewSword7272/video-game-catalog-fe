@@ -94,7 +94,11 @@ if (route.query.edit) {
   });
 }
 
+const turnLoading = inject('loading');
+
 const submitGame = async () => {
+
+  turnLoading(true);
 
   if (route.query.edit) {
     try {
@@ -104,6 +108,9 @@ const submitGame = async () => {
         body: formData.value,
         credentials: 'include'
       });
+
+      turnLoading(false);
+
       // Reset form after successful submission
       Object.keys(formData.value).forEach(key => formData.value[key] = '');
 
@@ -114,6 +121,7 @@ const submitGame = async () => {
       await navigateTo('/');
 
     } catch (error) {
+      turnLoading(false);
       submitting.value = false;
       console.error('Error editing game:', error);
       alert('Failed to edit game. Please try again.');
@@ -132,6 +140,8 @@ const submitGame = async () => {
         body: formattedData,
         credentials: 'include'
       });
+      turnLoading(false);
+
       // Reset form after successful submission
       Object.keys(formData.value).forEach(key => formData.value[key] = '');
 
@@ -141,6 +151,7 @@ const submitGame = async () => {
       await navigateTo('/');
 
     } catch (error) {
+      turnLoading(false);
       submitting.value = false;
       console.error('Error adding game:', error);
       alert('Failed to add game. Please try again.');
