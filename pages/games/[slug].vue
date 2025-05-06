@@ -32,9 +32,9 @@
 
 <script setup>
 
-definePageMeta({
-  middleware: ["auth"]
-})
+// definePageMeta({
+//   middleware: ["auth"]
+// })
 
 const route = useRoute();
 const config = useRuntimeConfig();

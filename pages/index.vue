@@ -14,9 +14,9 @@
 import { useUsers } from '~/composables/stores/userStore';
 
 
-definePageMeta({
-  middleware: ["auth"]
-})
+// definePageMeta({
+//   middleware: ["auth"]
+// })
 
 const {currentUser} = useUsers();
 
