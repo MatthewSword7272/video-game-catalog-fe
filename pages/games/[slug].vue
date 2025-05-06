@@ -1,16 +1,19 @@
 <template>
     <div class="space-y-10">
-        <div class="flex justify-center max-md:items-center md:gap-14 gap-4 max-md:flex-col">
-            <div v-if="game.image" class="w-60">
+        <div class="flex justify-center max-md:items-center md:gap-10 gap-4 max-md:flex-col">
+            <div v-if="game.image" class="w-1/2 flex justify-center">
                 <img :src="imageURL" class="object-fit" loading="lazy"/>
             </div>
-            <div class="flex flex-col justify-between max-md:items-center">
-                <span><b>Game Title:</b> {{ game.title }}</span>
-                <span><b>Genre:</b> {{ game.genre }}</span>
-                <span><b>Year of Release:</b> {{ game.release_year }}</span>
-                <span><b>Developer:</b> {{ game.developer }}</span>
-                <span><b>Publisher:</b> {{ game.publisher }}</span>
-                <span><b>Region Code:</b> {{ game.region_code }}</span>
+            <div class="text-white justify-between max-md:items-center w-1/2 space-y-3">
+                <h3 class="text-2xl"><b>{{ game.title }}</b> </h3>
+                <p>{{ game?.description }}</p>
+                <div class="mt-2 flex flex-col">
+                    <span><b>Genre:</b> {{ game.genre }}</span>
+                    <span><b>Year of Release:</b> {{ game.release_year }}</span>
+                    <span><b>Developer:</b> {{ game.developer }}</span>
+                    <span><b>Publisher:</b> {{ game.publisher }}</span>
+                    <span><b>Region Code:</b> {{ game.region_code }}</span>
+                </div>
             </div>
         </div>
         <div class="flex max-md:flex-col items-center justify-center gap-5">

@@ -1,12 +1,13 @@
 <template>
-    <div class="flex justify-center items-center mb-5">
-        <div class="flex gap-3 items-center">
-            <button @click="sortList" class="text-xl bg-gradient-to-b from-gray-200 to-gray-500 px-3 cursor-pointer hover:ring-2 duration-200">
+    <div class="flex justify-start items-center mb-5">
+        <div class="flex gap-3 items-center pl-10">
+            <!-- <button @click="sortList" class="text-xl px-3 cursor-pointer text-white duration-200">
                 Sort
+            </button> -->
+            <button @click="sortList" class="flex gap-3 items-center cursor-pointer">
+                <span class="text-white text-xl">{{ listGoingDown ? 'Descending' : 'Ascending' }}</span>
+                <v-icon name="fa-chevron-up" class="duration-300 text-white" :class="listGoingDown ? 'rotate-180' : 'rotate-0' "/>
             </button>
-            <div v-if="listSorted">
-                <v-icon name="fa-chevron-up" class="duration-300" :class="listGoingDown ? 'rotate-180' : 'rotate-0' "/>
-            </div>
         </div>
     </div>
 </template>

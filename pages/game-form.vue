@@ -170,7 +170,7 @@ input, select {
 }
 
 label {
-  @apply mb-2.5 font-bold text-lg
+  @apply mb-2.5 font-bold text-lg text-white
 }
 
 </style>

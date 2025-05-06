@@ -1,9 +1,10 @@
 <template>
-  <header class="text-center py-5 space-y-3">
-    <h1>Matthew's Video Game Catalog!</h1>
+  <header class="flex text-center p-5 items-center justify-between bg-white text-gray-800">
+    <h1>Matthew's Video Game Catalog</h1>
     <div v-if="currentUser">Current User: {{ currentUser.name }}</div>
     <nav class="flex gap-5 justify-center">
       <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="/games">Catalogue</NuxtLink>
       <NuxtLink to="/game-form">Add Game</NuxtLink>
       <button v-if="currentUser" @click="logout">Logout</button>
     </nav>
@@ -26,10 +27,10 @@ const logout = async () => {
 @reference "~/assets/css/main.css";
 
 .router-link-active {
-  @apply bg-orange-700;
+  @apply bg-white/50;
 }
 
 a, button {
-  @apply bg-orange-400 rounded-2xl px-4 py-1 hover:bg-orange-700 duration-300 ease-linear hover:backdrop-blur-md hover:shadow shadow-black ;
+  @apply rounded-2xl px-4 py-1 duration-200 ease-linear hover:backdrop-blur-md hover:shadow shadow-black ;
 }
 </style>
