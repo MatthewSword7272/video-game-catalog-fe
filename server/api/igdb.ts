@@ -12,7 +12,6 @@ export default defineEventHandler(async (event) => {
           },
           body: body
         });
-        console.log('API response:', data);
         return data;
       } catch (error) {
         console.error(error);

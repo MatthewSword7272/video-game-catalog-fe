@@ -9,8 +9,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   const {currentUser} = useUsers();
   // const user = getUser();
 
-  console.log('currentUser', currentUser);
-
   if (!currentUser && (to.path === '/')) {
     return navigateTo('/login')
   }
