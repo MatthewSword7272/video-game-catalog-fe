@@ -40,7 +40,8 @@ export default defineNuxtConfig({
     head: {
       title: "Matthew's Video Game Catalog"
     },
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'blur', mode: 'out-in' },
+    layoutTransition: { name: 'blur', mode: 'out-in' }
   },
   runtimeConfig: {
     app: {

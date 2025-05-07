@@ -1,5 +1,5 @@
 <template>
-    <li class="cursor-pointer transition bg-gray-600 hover:bg-gray-400 rounded-lg w-3/4">
+    <li ref="gameRef" class="cursor-pointer transition bg-gray-600 hover:bg-gray-400 rounded-lg w-3/4">
         <NuxtLink :to="`/games/${game.id}`" class="flex flex-col gap-3">
             <div v-if="game.image" class="w-full">
                 <img :src="imageURL" class="object-fit rounded-t-lg w-full" loading="lazy" />
@@ -15,9 +15,13 @@
 </template>
 
 <script setup>
+
 const { game } = defineProps(['game'])
 
 const imageURL = `https://images.igdb.com/igdb/image/upload/t_cover_big/${game?.image}.webp`
+
+const gameRef = useTemplateRef('gameRef')
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -27,8 +27,6 @@ import { gsap } from "gsap";
 
 const header = useTemplateRef("header");
 
-gsap.registerPlugin();
-
 onMounted(() => {
   gsap.fromTo(
     header.value,
