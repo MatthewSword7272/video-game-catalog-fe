@@ -1,9 +1,5 @@
 <template>
   <div>
-    <!-- <div class="absolute size-full inset-0 bg-black/50">
-      <div class="rounded-full size-5 bg-white top-1/2 left-1/2 translate-1/2"></div>
-    </div> -->
-    <!-- <NuxtLoadingIndicator></NuxtLoadingIndicator> -->
     <form class="flex-grow p-5 space-y-6" @submit.prevent="submitGame">
       <div class="flex flex-col">
         <label for="title">Title</label>

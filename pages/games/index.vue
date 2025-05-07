@@ -18,23 +18,26 @@ import { useUsers } from '~/composables/stores/userStore';
 //   middleware: ["auth"]
 // })
 
-const {currentUser} = useUsers();
+// const {currentUser} = useUsers();
 
 const games = ref([]);
 
 const config = useRuntimeConfig();
 
-if (currentUser) {
-  const {data: userGames} = await useFetch(`${config.app.apiURL}/user/games`, {
-    query: {
-      user_id: currentUser.id
-    }
-  });
-  games.value = userGames.value || [];
-} else {
-  const {data} = await useFetch(`${config.app.apiURL}/games`);
-  games.value = data.value || [];
-}
+const {data} = await useFetch(`${config.app.apiURL}/games`);
+games.value = data.value || [];
+
+// if (currentUser) {
+//   const {data: userGames} = await useFetch(`${config.app.apiURL}/user/games`, {
+//     query: {
+//       user_id: currentUser.id
+//     }
+//   });
+//   games.value = userGames.value || [];
+// } else {
+//   const {data} = await useFetch(`${config.app.apiURL}/games`);
+//   games.value = data.value || [];
+// }
 
 </script>
 
