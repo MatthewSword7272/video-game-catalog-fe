@@ -1,9 +1,9 @@
 <template>
-  <header
-    ref="header"
-    class="flex text-center p-5 items-center justify-between bg-white text-gray-800"
-  >
-    <h1>Matthew's Video Game Catalog</h1>
+  <header ref="header" class="flex text-center p-5 items-center justify-between bg-white text-gray-800">
+    <div class="flex items-center gap-5">
+      <img src="/mc_logo.png" class="size-10" alt=""/>
+      <h1>Matthew's Video Game Catalog</h1>
+    </div>
     <!-- <div v-if="currentUser">Current User: {{ currentUser.name }}</div> -->
 
     <MobileNav />
@@ -40,8 +40,8 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
-@reference "~/assets/css/main.css";
+<style scoped lang="scss">
+@import "~/assets/css/main.css";
 
 .router-link-active {
   @apply bg-white/50;
