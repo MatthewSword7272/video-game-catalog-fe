@@ -5,12 +5,9 @@
   >
     <h1>Matthew's Video Game Catalog</h1>
     <!-- <div v-if="currentUser">Current User: {{ currentUser.name }}</div> -->
-    <nav class="flex gap-5 justify-center">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/games">Catalogue</NuxtLink>
-      <NuxtLink to="/game-form">Add Game</NuxtLink>
-      <!-- <button v-if="currentUser" @click="logout">Logout</button> -->
-    </nav>
+
+    <MobileNav />
+
   </header>
 </template>
 

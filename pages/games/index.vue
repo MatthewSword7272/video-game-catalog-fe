@@ -3,7 +3,7 @@
     <div v-if="games.length !== 0">
       <GameViewOptions :games="games" />
       <ul
-        class="h-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-3 gap-y-10 justify-items-center game-grid"
+        class="h-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-3 gap-y-10 justify-items-center game-grid z-0 relative"
       >
         <PreviewGame
           v-for="(game, index) in games"

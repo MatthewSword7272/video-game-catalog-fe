@@ -4,7 +4,7 @@
       <img src="/hero_image.png" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black/50 w-full h-full"></div>
     </div>
-    <div class="flex flex-col items-left justify-center h-[90%] px-28 space-y-6 text-white">
+    <div class="flex flex-col items-left justify-center h-[90%] px-28 space-y-6 text-white relative -z-1">
       <h2 ref="title" class="text-4xl font-black">
         Welcome to Matthew's Video Game Catalog
       </h2>
